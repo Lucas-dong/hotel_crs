@@ -27,8 +27,8 @@ class ProfileService extends Common
         $xmlData->setAttribute("xmlns", "http://www.shijinet.com.cn/kunlun/kws/1.1/");
         $this->Body->appendChild($xmlData);
 
-        $simpleSvcMemberInfo = $this->xml->createElement("telephone", $phone);
-        $xmlData->appendChild($simpleSvcMemberInfo);
+        $telephone = $this->xml->createElement("telephone", $phone);
+        $xmlData->appendChild($telephone);
 
         $result = $this->xmlFoot('ProfileService', ucfirst(__FUNCTION__));
         if (!empty($result['errcode'])) {
@@ -110,5 +110,27 @@ class ProfileService extends Common
             return $result;
         }
         return $this->success($result[1][0]['GetAvailableCouponsByCardNoAndHotelResponse']);
+    }
+
+    /**
+     * 查询会员可用礼券列表
+     * 
+     * @param integer $cardNo 卡号
+     * @return void 
+     */
+    public function getPointExchangeList($cardno)
+    {
+        $xmlData = $this->xml->createElement(ucfirst(__FUNCTION__));
+        $xmlData->setAttribute("xmlns", "http://www.shijinet.com.cn/kunlun/kws/1.1/");
+        $this->Body->appendChild($xmlData);
+
+        $cardNo = $this->xml->createElement("cardNo", $cardno);
+        $xmlData->appendChild($cardNo);
+
+        $result = $this->xmlFoot('ProfileService', ucfirst(__FUNCTION__));
+        if (!empty($result['errcode'])) {
+            return $result;
+        }
+        return $this->success($result[1][0]['GetPointExchangeListResponse']);
     }
 }

@@ -11,7 +11,7 @@
             "email": "2582607271@qq.com"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
             "HotelCrs\\": "src/"

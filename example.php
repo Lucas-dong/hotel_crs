@@ -14,8 +14,8 @@ try {
     // print_r($session);exit;
     $res = new ProfileService($session['SessionId']);
 
-    $result = $res->getMemberInfoByTelephone('15036134165');
-    // $result = $res->getPointAccrueListByTime('683000000033');
+    // $result = $res->getMemberInfoByTelephone('15036134165');
+    $result = $res->getPointExchangeList('683000000033');
     // $result = $res->getAvailableCouponsByCardNoAndHotel('683000000033', '1002');
     print_r($result);
 } catch (\Throwable $e) {
